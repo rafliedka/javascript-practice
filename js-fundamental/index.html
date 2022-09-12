@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./script.js"></script>
+    <table align="center" border="1" cellpadding="10" cellspacing="0" width="40%">
+        <thead>
+            <tr bgcolor="grey">
+                <th colspan="2">Data Pegawai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nama</td>
+                <td>
+                    <script>
+                        document.write(nama);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td>
+                    <script>
+                        document.write(jabatan);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <script>
+                        document.write(statusPernikahan);
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>Gaji Pokok</td>
+                <td>
+                    <script>
+                        document.write(`Rp.${gajiPokok}`)
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>Tunjangan</td>
+                <td>
+                    <script>
+                        document.write(`Rp.${tunjanganJabatan}`)
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>BPJS</td>
+                <td>
+                    <script>
+                        document.write(`Rp.${bpjsJabatan}`)
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>Tunjangan Keluarga</td>
+                <td>
+                    <script>
+                        document.write(`Rp.${tunjanganKeluarga}`)
+                    </script>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr bgcolor="grey">
+                <th>Total Gaji</th>
+                <th>
+                    <script>
+                        document.write(`Rp.${gajiBersih}`)
+                    </script>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
