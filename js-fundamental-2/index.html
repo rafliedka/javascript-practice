@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="./script.js"></script> -->
+    <table align="center" border="1" cellpadding="10" cellspacing="0" width="40%">
+        <thead>
+            <tr>
+                <td colspan="10" align="center">DAFTAR PEGAWAI</td>
+            </tr>
+            <tr bgcolor="grey">
+                <th>NO</th>
+                <th>NAMA</th>
+                <th>JABATAN</th>
+                <th>AGAMA</th>
+                <th>GAJI POKOK</th>
+                <th>TUNJANGAN JABATAN</th>
+                <th>TUNJANGAN KESEHATAN</th>
+                <th>GAJI KOTOR</th>
+                <th>ZAKAT PROFESI</th>
+                <th>GAJI BERSIH</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                // format rupiah
+                const formatRp = (e) => {
+                    return new Intl.NumberFormat("id-ID").format(e)
+                }
+
+                // melakukan looping pegawai 1 s/d 100
+                for (let angka = 1; angka <= 100; angka++) {
+
+                    // agama
+                    angka % 2 == 1 ? agama = "Muslim" : agama = "Non Muslim"
+                    
+                    // warna baris
+                    const warna = agama === "Muslim" ? "#F0FFFF" : "#FFFFFF"
+                    
+                    // tentukan range jabatan
+                    if (angka > 75 && angka <= 100) jabatan = "Staff"
+                    else if (angka > 50 && angka <= 75) jabatan = "Super Visor"
+                    else if (angka > 25 && angka <= 50) jabatan = "Asisten Manager"
+                    else jabatan = "Manager"
+
+                    // gaji pokok
+                    switch (jabatan) {
+                        case "Staff":
+                            gajiPokok = 4000000;
+                            break
+                        case "Super Visor":
+                            gajiPokok = 7000000;
+                            break
+                        case "Asisten Manager":
+                            gajiPokok = 10000000;
+                            break
+                        case "Manager":
+                            gajiPokok = 15000000;
+                            break
+                        default:
+                            gajiPokok = 15000000;
+                            break
+                    }
+
+                    // gaji kotor
+                    let tunjanganJabatan = gajiPokok * 0.2
+                    let tunjanganKesehatan = gajiPokok * 0.1
+                    let gajiKotor = gajiPokok + tunjanganJabatan + tunjanganKesehatan
+
+                    // pajak zakat untuk muslim
+                    let zakatProfesi = 0
+                    if (agama === "Muslim" && gajiKotor >= 7000000) zakatProfesi = gajiKotor * 0.025
+                    else zakatProfesi = 0
+
+                    // gaji bersih
+                    const gajiBersih = gajiKotor - zakatProfesi
+
+                    // print ke web
+                    document.write(`
+                        <tr bgcolor=${warna}>
+                            <td align="center">${angka}</td>
+                            <td>Pegawai${angka}</td>
+                            <td>${jabatan}</td>
+                            <td>${agama}</td>
+                            <td>Rp. ${formatRp(gajiPokok)}</td>
+                            <td>Rp. ${formatRp(tunjanganJabatan)}</td>
+                            <td>Rp. ${formatRp(tunjanganKesehatan)}</td>
+                            <td>Rp. ${formatRp(gajiKotor)}</td>
+                            <td>Rp. ${formatRp(zakatProfesi)}</td>
+                            <td>Rp. ${formatRp(gajiBersih)}</td>
+                        </tr>
+                    `)
+                }
+            </script>
+        </tbody>
+        <tfoot>
+            <tr bgcolor="grey">
+                <th>NO</th>
+                <th>NAMA</th>
+                <th>JABATAN</th>
+                <th>AGAMA</th>
+                <th>GAJI POKOK</th>
+                <th>TUNJANGAN JABATAN</th>
+                <th>TUNJANGAN KESEHATAN</th>
+                <th>GAJI KOTOR</th>
+                <th>ZAKAT PROFESI</th>
+                <th>GAJI BERSIH</th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
