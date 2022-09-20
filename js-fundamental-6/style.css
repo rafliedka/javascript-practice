@@ -1,0 +1,14 @@
+table {
+    width: 50%;
+}
+
+table,
+td {
+    text-align: center;
+    border: 1px double black;
+}   
+
+thead {
+    background-color: aqua;
+}
+
